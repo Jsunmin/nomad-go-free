@@ -5,44 +5,27 @@ import (
 	"fmt"
 )
 
-// go entry function
 func main() {
-	result1 := canIDrinkIf(18)
-	fmt.Println(result1)
-	result2 := canIDrinkSwitch(18)
-	fmt.Println(result2)
-}
-
-// IF
-func canIDrinkIf(age int) bool {
-	// if 문 형식 + Go에서는 if block내 변수 선언이 가능하다!
-	if varInIf := age + 2; varInIf > 18 {
-		fmt.Println(varInIf, "true?")
-		return true
-	}
-	return false
-}
-
-// SWITCH
-func canIDrinkSwitch(age int) bool {
-	// switch 문 형식 + Go에서는 switch block내 변수 선언이 가능하다!
-	// switch varInIf2 := age + 2; varInIf2 {
-	// case 10:
-	// 	return false
-	// case 18:
-	// 	fmt.Println(varInIf2, "switch here!")
-	// 	return true
-	// case 20:
-	// 	fmt.Println(varInIf2, "switch here?")
-	// 	return false
-	// }
-	switch {
-	case age+2 < 10:
-		return false
-	case age+2 == 18:
-		return true
-	case age+2 >= 20:
-		return false
-	}
-	return false
+	// low level programming
+	a := 2
+	b := a
+	// memory address check : &var
+	fmt.Println(&a, &b, a, b)
+	a = 10
+	fmt.Println(&a, &b, a, b)
+	// c = a's memory address
+	c := &a
+	// 각각 c메모리 주소, c저장값, c저장값(메모리주소)의 저장값
+	fmt.Println(&c, c, *c)
+	/*
+	** c는 a의 메모리주소를 참조하기 때문에 primaryValue 변경도 함께 적용됨
+	** 1. 이를 활용해서, 메모리 저장공간을 아낄 수 있다!!
+	** 2. 반대로 c를 통해 a값을 변경시킬 수도 있다!!
+	 */
+	a = 5
+	fmt.Println(&a, &b, a, b)
+	fmt.Println(&c, c, *c)
+	*c = 9
+	fmt.Println(&a, &b, a, b)
+	fmt.Println(&c, c, *c)
 }
